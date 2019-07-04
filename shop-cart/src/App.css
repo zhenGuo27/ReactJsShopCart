@@ -6,6 +6,7 @@ body {
 .mainWrapper {
   width: 80%;
   margin: 0 auto;
+  margin-top: 1.25rem;
   background-color: white;
   max-width: 1170px;
   display: -webkit-flex; /* Safari */
