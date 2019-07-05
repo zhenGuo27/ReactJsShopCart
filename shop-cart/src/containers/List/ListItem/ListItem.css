@@ -1,0 +1,26 @@
+.listItem {
+    width: 30%;
+    font-size: 1.125rem;   
+    font-weight: bold;
+}
+
+.listItem .name {
+    font-size: 1.1em;
+    padding-top: 0.1875rem;
+}
+
+.listItem img {
+    width: 100%;
+}
+
+.listItem .price {
+    color: #fd3a13;
+}
+
+.listItem .price::before {
+    content: "$";
+}
+
+.listWrapper .listItem:nth-child(n+4) {
+    margin-top: 0.625rem;
+}
