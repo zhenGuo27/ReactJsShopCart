@@ -1,0 +1,21 @@
+.filterWrpper {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    padding: 0.3125rem;
+}
+
+.categoryName {
+   font-size: 1em;
+}
+
+.itemWrapper {
+    font-size: 0.9em;
+}

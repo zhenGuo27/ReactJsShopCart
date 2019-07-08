@@ -5,11 +5,7 @@ import Pagination from '../../components/Pagination/Pagination';
 
 class List extends Component {
     state = {
-        items: []
-    }
-
-    componentDidMount() {
-        let items = [
+        items: [
             {
                 name: "item1",
                 price: 100,
@@ -40,9 +36,8 @@ class List extends Component {
                 price: 600,
                 img: "/images/6.jpg"
             }
-
-        ];
-        this.setState({ items: items });
+        
+        ]
     }
 
     render() {

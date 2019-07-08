@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 
 import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import brands from '@fortawesome/fontawesome-free-brands';
 import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
 
