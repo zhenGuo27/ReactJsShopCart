@@ -15,6 +15,7 @@
 
 .listItem .price {
     color: #fd3a13;
+    font-weight: 500;
 }
 
 .listItem .price::before {

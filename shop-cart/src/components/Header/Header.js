@@ -5,16 +5,16 @@ import Navigation from '../Navigation/Navigation';
 const header = (props) => {
     let navItems = [
         {
-            name: "item1"          
+            name: "About",
+            dropdown: false          
         },
         {
-            name: "item2"
+            name: "Category",
+            dropdown: true
         },
         {
-            name: "item3"
-        },
-        {
-            name: "item4"
+            name: "Contact",
+            dropdown: false
         }
     ];
 

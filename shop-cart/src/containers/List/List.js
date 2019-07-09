@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './List.css';
 import ListItems from './ListItem/ListItem';
 import Pagination from '../../components/Pagination/Pagination';
+import axios from '../../axios-orders';
 
 class List extends Component {
     state = {
@@ -38,6 +39,16 @@ class List extends Component {
             }
         
         ]
+    }
+
+    componentDidMount() {
+        axios.get('product.json')
+             .then(reponse => {
+                //console.log("product Get", reponse);
+             })
+             .catch(error => {
+                console.log("product Get error", error);
+             });
     }
 
     render() {

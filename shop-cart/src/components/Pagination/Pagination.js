@@ -12,9 +12,9 @@ const pagination = (props) => {
 
     return (
         <div className="pageWrapper">
-            <div><FontAwesomeIcon icon="angle-double-left" /></div>
+            <div className="pageItem"><FontAwesomeIcon icon="caret-left" /></div>
             { pages }
-            <div><FontAwesomeIcon icon="angle-double-right" /></div>
+            <div className="pageItem"><FontAwesomeIcon icon="caret-right" /></div>
         </div>
     );
 };
