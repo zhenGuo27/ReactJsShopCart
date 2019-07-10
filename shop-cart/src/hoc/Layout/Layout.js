@@ -184,14 +184,10 @@ class Layout extends Component {
      Object.keys(productData).map((igKey, index) => {
       product.push(productData[igKey]);
     });
-
-    console.log("before filter", product);
     
     let filterProduct = product.filter(function (item, index, array) {
       return item.name.indexOf(keyword) != -1;
     });
-
-    console.log("filter", filterProduct);
 
     this.setState({ productForRender: filterProduct });
   }
@@ -216,7 +212,9 @@ class Layout extends Component {
             <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
             <Filter {...category}></Filter>
           </SmallDeviceWrapper>
-          <List {...product}></List>
+          <main>
+            <List {...product}></List>
+          </main>
           <Aside>
             <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
             <Filter {...category}></Filter>

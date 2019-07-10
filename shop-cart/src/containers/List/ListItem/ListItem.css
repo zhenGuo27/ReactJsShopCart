@@ -25,3 +25,7 @@
 .listWrapper .listItem:nth-child(n+4) {
     margin-top: 0.625rem;
 }
+
+.hiddenItem {
+    visibility: hidden;
+}

@@ -1,5 +1,5 @@
 .listWrapper {
-    width: 70%;
+    width: 100%;
     box-sizing: border-box;
     display: -webkit-flex; /* Safari */
     -webkit-justify-content: space-between; /* Safari 6.1+ */
@@ -7,6 +7,8 @@
     justify-content: space-between;
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     flex-wrap: wrap;
+    -webkit-align-items: flex-start; /* Safari 7.0+ */
+    align-items: flex-start;
 }
 
 @media (max-width: 768px) {
