@@ -12,7 +12,7 @@ const list = (props) => {
         listItems.push(<ListItems key={props[igKey].name} name={props[igKey].name} img={props[igKey].img} price={props[igKey].price}></ListItems>);
     });
 
-    if (listItems.length % 3 != 0) {
+    if (listItems.length % 3 !== 0) {
         let name = "";
         let listItemsLen = listItems.length;
         for (let a = 0; a < (3 - listItemsLen % 3); a++) {

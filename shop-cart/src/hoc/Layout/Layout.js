@@ -8,44 +8,50 @@ import List from '../../containers/List/List';
 import SmallDeviceWrapper from '../../components/SmallDeviceWrapper/SmallDeviceWrapper';
 import axios from '../../axios-orders';
 
-let dbCategory = null;
+let dbProduct = null;
 
 class Layout extends Component {
   state = {
+    category: null,
     searchKeyword: '',
-    product: null,
     productForRender: null
   }
 
   componentDidMount() {
     axios.get('category.json')
       .then(reponse => {
-        //console.log("Category Get Data", reponse.data);
-        dbCategory = reponse.data;
+        const categoryData = {... reponse.data};
+        let category = [];
+        Object.keys(categoryData)
+          .map(igKey => {
+            categoryData[igKey].category.forEach((element, i, array) => {
+              // element: 單一個陣列的值
+              // i: 陣列的索引值 0, 1, 2, ...
+              // array: 傳入的陣列本體
+              category.push(element);
+            });
+          });
+        this.setState({ category: category });
       })
       .catch(error => {
         console.log("Category Get error", error);
       });
 
-
     axios.get('product.json')
       .then(reponse => {
-        console.log("product Get", reponse.data);
-
         const productData = { ...reponse.data };
         let product = [];
         Object.keys(productData)
           .map(igKey => {
             productData[igKey].products.forEach((element, i, array) => {
-                // element: 單一個陣列的值
-                // i: 陣列的索引值 0, 1, 2, ...
-                // array: 傳入的陣列本體
-                product.push(element);
+              // element: 單一個陣列的值
+              // i: 陣列的索引值 0, 1, 2, ...
+              // array: 傳入的陣列本體
+              product.push(element);
             });
           });
-
-        this.setState({product: product});
-        this.setState({productForRender: product});       
+        dbProduct = product;
+        this.setState({ productForRender: product });
       })
       .catch(error => {
         console.log("product Get error", error);
@@ -59,13 +65,13 @@ class Layout extends Component {
 
   seachHandler = (event) => {
     let product = [];
-    let productData = {...this.state.product};
+    let productData = { ...dbProduct };
     let keyword = this.state.searchKeyword;
 
-     Object.keys(productData).map((igKey, index) => {
+    Object.keys(productData).map((igKey, index) => {
       product.push(productData[igKey]);
     });
-    
+
     let filterProduct = product.filter(function (item, index, array) {
       return item.name.indexOf(keyword) != -1;
     });
@@ -74,16 +80,8 @@ class Layout extends Component {
   }
 
   render() {
-    const categoryData = { ...dbCategory };
-
-    let category = [];
-    Object.keys(categoryData)
-      .map(igKey => {
-        category = { ...categoryData[igKey] };
-      });
-
-    let product = {...this.state.productForRender};
-    console.log("render product", product);
+    let category = {... this.state.category};  
+    let product = { ...this.state.productForRender };
 
     return (
       <Aux>

@@ -3,7 +3,7 @@ import './ListItem.css';
 
 const listItems = (props) => {
     let className = "listItem";
-    if(props.name.indexOf("hidden")!=-1){
+    if(props.name.indexOf("hidden")!==-1){
         className+= " hiddenItem";
     }
 
