@@ -1,68 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './List.css';
 import ListItems from './ListItem/ListItem';
 import Pagination from '../../components/Pagination/Pagination';
-import axios from '../../axios-orders';
 
-class List extends Component {
-    state = {
-        items: [
-            {
-                name: "item1",
-                price: 100,
-                img: "/images/1.jpg"
-            },
-            {
-                name: "item2",
-                price: 200,
-                img: "/images/2.jpg"
-            },
-            {
-                name: "item3",
-                price: 300,
-                img: "/images/3.jpg"
-            },
-            {
-                name: "item4",
-                price: 400,
-                img: "/images/4.jpg"
-            },
-            {
-                name: "item5",
-                price: 500,
-                img: "/images/5.jpg"
-            },
-            {
-                name: "item6",
-                price: 600,
-                img: "/images/6.jpg"
-            }
-        
-        ]
-    }
+const list = (props) => {
+    let listItems = [];
+    Object.keys(props).map((igKey, index) => {   
+        listItems.push(<ListItems key={props[igKey].name} name={props[igKey].name} img={props[igKey].img} price={props[igKey].price}></ListItems>);  
+    });
+    
+    return (
+        <div className="listWrapper">
+            {listItems}
+            <Pagination totalAmountPage="5"></Pagination>
+        </div>
+    );
+};
 
-    componentDidMount() {
-        axios.get('product.json')
-             .then(reponse => {
-                //console.log("product Get", reponse);
-             })
-             .catch(error => {
-                console.log("product Get error", error);
-             });
-    }
-
-    render() {
-        let listItems = this.state.items.map((item) => {
-            return <ListItems key={item.name} name={item.name} img={item.img} price={item.price}></ListItems>
-        });
-
-        return (
-            <div className="listWrapper">
-                {listItems}
-                <Pagination totalAmountPage="5"></Pagination>
-            </div>
-        );
-    }
-}
-
-export default List;
+export default list;

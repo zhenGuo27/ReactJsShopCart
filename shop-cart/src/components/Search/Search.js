@@ -5,8 +5,8 @@ import FormButton from '../FormButton/FormButton';
 const search = (props) => {
     return (
         <div className="searchWrapper">
-           <input type="text"  name="searchInput"/>
-           <FormButton name="Search"></FormButton>
+           <input type="text"  name="searchInput" value={props.keyword} onChange={(event) => props.change(event)} />
+           <FormButton name="Search" click={props.click}></FormButton>
         </div>
     );
 };
