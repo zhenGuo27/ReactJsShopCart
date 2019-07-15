@@ -1,0 +1,50 @@
+footer {
+    width: 100%;
+    color: #fff;
+    margin-top: 1.25rem;
+    padding: 1.25rem 0;
+    background-color: #232323;
+}
+
+.footerWrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1170px;
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-between; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerWrapper > div {
+    width: 30%;
+}
+
+.footerItemName {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.625rem;
+}
+
+.footerItem {
+    font-size: 1.125rem;
+}
+
+.fontIconWrapper {
+    font-size: 1.875rem;
+    display: inline-block;
+    background-color: #000;
+}
+
+.socialMediaWrapper > .fontIconWrapper:not(:last-child) {
+    margin-right: 0.625rem;
+}
+
+.sitemapItem {
+    margin-top: 0.625rem;
+}
+
+.contactItem .svg-inline--fa {
+   width: 1.125rem;
+   height: 1.125rem;
+}

@@ -6,6 +6,7 @@ import Filter from '../../components/Filter/FIlter';
 import Aside from '../../components/Aside/Aside';
 import List from '../../containers/List/List';
 import SmallDeviceWrapper from '../../components/SmallDeviceWrapper/SmallDeviceWrapper';
+import Footer from '../../components/Footer/Footer';
 import axios from '../../axios-orders';
 
 let dbProduct = null;
@@ -14,13 +15,13 @@ class Layout extends Component {
   state = {
     category: null,
     searchKeyword: '',
-    productForRender: null
+    filterKeyword: '' // pass it to List to filter product
   }
 
   componentDidMount() {
     axios.get('category.json')
       .then(reponse => {
-        const categoryData = {... reponse.data};
+        const categoryData = { ...reponse.data };
         let category = [];
         Object.keys(categoryData)
           .map(igKey => {
@@ -36,30 +37,9 @@ class Layout extends Component {
       .catch(error => {
         console.log("Category Get error", error);
       });
-
-    axios.get('product.json')
-      .then(reponse => {
-        const productData = { ...reponse.data };
-        let product = [];
-        Object.keys(productData)
-          .map(igKey => {
-            productData[igKey].products.forEach((element, i, array) => {
-              // element: 單一個陣列的值
-              // i: 陣列的索引值 0, 1, 2, ...
-              // array: 傳入的陣列本體
-              product.push(element);
-            });
-          });
-        dbProduct = product;
-        this.setState({ productForRender: product });
-      })
-      .catch(error => {
-        console.log("product Get error", error);
-      });
   }
 
   searchOnchange = (event) => {
-    console.log("searchOnchange", event.target.value);
     this.setState({ searchKeyword: event.target.value });
   }
 
@@ -67,21 +47,11 @@ class Layout extends Component {
     let product = [];
     let productData = { ...dbProduct };
     let keyword = this.state.searchKeyword;
-
-    Object.keys(productData).map((igKey, index) => {
-      product.push(productData[igKey]);
-    });
-
-    let filterProduct = product.filter(function (item, index, array) {
-      return item.name.indexOf(keyword) != -1;
-    });
-
-    this.setState({ productForRender: filterProduct });
+    this.setState({ filterKeyword: keyword });
   }
 
   render() {
-    let category = {... this.state.category};  
-    let product = { ...this.state.productForRender };
+    let category = { ... this.state.category };
 
     return (
       <Aux>
@@ -92,13 +62,14 @@ class Layout extends Component {
             <Filter {...category}></Filter>
           </SmallDeviceWrapper>
           <main>
-            <List {...product}></List>
+            <List filterKeyword={this.state.filterKeyword}></List>
           </main>
           <Aside>
             <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
             <Filter {...category}></Filter>
           </Aside>
         </div>
+        <Footer></Footer>
       </Aux>
     )
   }
