@@ -17,6 +17,12 @@
     } 
 }
 
+.noMatchItem {
+    margin: 0 auto;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
 /*pagination*/
 
 .pageWrapper {

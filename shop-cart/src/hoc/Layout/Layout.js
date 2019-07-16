@@ -15,7 +15,8 @@ class Layout extends Component {
   state = {
     category: null,
     searchKeyword: '',
-    filterKeyword: '' // pass it to List to filter product
+    filterKeyword: '', // pass it to List to filter product
+    filterCategoryItem: 0
   }
 
   componentDidMount() {
@@ -50,6 +51,10 @@ class Layout extends Component {
     this.setState({ filterKeyword: keyword });
   }
 
+  searchCategoryHandler = (event) => {
+    this.setState({filterCategoryItem: event.target.id});
+  }
+
   render() {
     let category = { ... this.state.category };
 
@@ -59,14 +64,14 @@ class Layout extends Component {
         <div className="mainWrapper">
           <SmallDeviceWrapper>
             <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
-            <Filter {...category}></Filter>
+            <Filter category={category} filterClick={this.searchCategoryHandler}></Filter>
           </SmallDeviceWrapper>
           <main>
-            <List filterKeyword={this.state.filterKeyword}></List>
+            <List filterKeyword={this.state.filterKeyword} filterCategoryItem={this.state.filterCategoryItem}></List>
           </main>
           <Aside>
             <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
-            <Filter {...category}></Filter>
+            <Filter category={category} filterClick={this.searchCategoryHandler}></Filter>
           </Aside>
         </div>
         <Footer></Footer>

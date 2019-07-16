@@ -3,14 +3,14 @@ import CategoryItems from './CategoryItem/CategoryItem';
 
 const category = (props) => {
     const items = [];
-    Object.keys(props).map((igKey, index) => {
+    Object.keys(props.category).map((igKey, index) => {
         let liEle = null;
         let itemTemp = [];
-        items.push(<li className="categoryName" key={props[igKey].name}>{props[igKey].name}</li>);
-        for (let j = 0; j < props[igKey].item.length; j++) {
-            itemTemp.push(<CategoryItems key={props[igKey].item[j].name} name={props[igKey].item[j].name}></CategoryItems>);
+        items.push(<li className="categoryName" key={props.category[igKey].name}>{props.category[igKey].name}</li>);
+        for (let j = 0; j < props.category[igKey].item.length; j++) {
+            itemTemp.push(<CategoryItems key={props.category[igKey].item[j].name} name={props.category[igKey].item[j].name} id={props.category[igKey].item[j].id} filterClick={props.filterClick}></CategoryItems>);
         }
-        liEle = <li key={props[igKey].name + "itemWrapper"}><ul className="itemWrapper"> {itemTemp} </ul></li>;
+        liEle = <li key={props.category[igKey].name + "itemWrapper"}><ul className="itemWrapper"> {itemTemp} </ul></li>;
         items.push(liEle);
     });
 
