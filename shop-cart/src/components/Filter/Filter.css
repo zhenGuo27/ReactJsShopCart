@@ -20,3 +20,8 @@ li {
     font-size: 0.9em;
     font-weight: normal;
 }
+
+.categoryItemActive {
+    color: #ffa45c;
+    background-color: #000;
+}

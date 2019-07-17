@@ -16,7 +16,7 @@ class Layout extends Component {
     category: null,
     searchKeyword: '',
     filterKeyword: '', // pass it to List to filter product
-    filterCategoryItem: 0
+    filterCategoryItem: 0,
   }
 
   componentDidMount() {
@@ -52,7 +52,14 @@ class Layout extends Component {
   }
 
   searchCategoryHandler = (event) => {
-    this.setState({filterCategoryItem: event.target.id});
+    this.setState({ filterCategoryItem: event.target.id });
+
+    let x = document.querySelectorAll(".cItem");
+    let i;
+    for (i = 0; i < x.length; i++) {
+      x[i].className = "cItem";
+    }
+    event.target.className = "cItem categoryItemActive";
   }
 
   render() {
