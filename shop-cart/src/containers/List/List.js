@@ -44,33 +44,48 @@ class List extends Component {
     componentWillReceiveProps(nextProps){        
         this.setState({ searchKeyword: nextProps.filterKeyword });
         const searchKw = this.state.searchKeyword;
+        const searchType = (searchKw != nextProps.filterKeyword)? "keyword": "category";
 
-        //search keyword 
-        if (searchKw != nextProps.filterKeyword) {
-            let filterProduct = dbProduct.filter(function (item, index, array) {
-                return item.name.indexOf(nextProps.filterKeyword) != -1;
-            });
-            this.setState({ productForRender: filterProduct });
-            this.getAmountOfPage(filterProduct.length);
-        } else { // search category item
-            this.setState({ searchCategory: nextProps.filterCategoryItem });
-            const searchCategory = this.state.searchCategory;
-
-            if (searchCategory != nextProps.filterCategoryItem && nextProps.filterCategoryItem != 0) {
+        switch (searchType) {
+            case "keyword":
                 let filterProduct = dbProduct.filter(function (item, index, array) {
-                    return item.categoryItem == nextProps.filterCategoryItem;
+                    return item.name.indexOf(nextProps.filterKeyword) != -1;
                 });
                 this.setState({ productForRender: filterProduct });
                 this.getAmountOfPage(filterProduct.length);
-            } else if (dbProduct != null && searchCategory == 0 || 
-                       dbProduct != null && nextProps.filterCategoryItem == 0) {
-                this.setState({ productForRender: dbProduct });
-                this.getAmountOfPage(dbProduct.length);
-            } else {
-                this.setState({ productForRender: [] });
-                this.getAmountOfPage(0);
-            }
+                break;
+            case "category":
+                this.setState({ searchCategory: nextProps.filterCategoryItem });
+                const searchCategory = this.state.searchCategory;
+
+                if (searchCategory != nextProps.filterCategoryItem && nextProps.filterCategoryItem != 0) {
+                    this.filterByCatgory(nextProps.filterCategoryItem);
+                } else if (dbProduct != null && searchCategory == 0 ||
+                     dbProduct != null && nextProps.filterCategoryItem == 0) {
+                    this.AllCategory();
+                } else {
+                    this.filterNoMatch();
+                }
+                break;
         }
+    }
+
+    filterByCatgory = (filterCategoryItem) => {
+        let filterProduct = dbProduct.filter(function (item, index, array) {
+            return item.categoryItem == filterCategoryItem;
+        });
+        this.setState({ productForRender: filterProduct });
+        this.getAmountOfPage(filterProduct.length);
+    }
+
+    AllCategory = () => {
+        this.setState({ productForRender: dbProduct });
+        this.getAmountOfPage(dbProduct.length);
+    }
+
+    filterNoMatch = () => {
+        this.setState({ productForRender: [] });
+        this.getAmountOfPage(0);
     }
 
     getAmountOfPage = (len) => {
