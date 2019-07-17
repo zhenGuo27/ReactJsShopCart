@@ -3,6 +3,11 @@ import CategoryItems from './CategoryItem/CategoryItem';
 
 const category = (props) => {
     const items = [];
+    items.push(<CategoryItems key="allCategory" 
+                                name="All"
+                                id="0" 
+                                filterClick={props.filterClick}></CategoryItems>);
+
     Object.keys(props.category).map((igKey, index) => {
         let liEle = null;
         let itemTemp = [];
@@ -19,6 +24,7 @@ const category = (props) => {
 
     return (
         <ul className="categoryWrapper">
+
             {items}
         </ul>
     );

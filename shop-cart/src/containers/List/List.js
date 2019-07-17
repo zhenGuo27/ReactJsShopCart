@@ -62,7 +62,8 @@ class List extends Component {
                 });
                 this.setState({ productForRender: filterProduct });
                 this.getAmountOfPage(filterProduct.length);
-            } else if (dbProduct != null && searchCategory == 0) {
+            } else if (dbProduct != null && searchCategory == 0 || 
+                       dbProduct != null && nextProps.filterCategoryItem == 0) {
                 this.setState({ productForRender: dbProduct });
                 this.getAmountOfPage(dbProduct.length);
             } else {

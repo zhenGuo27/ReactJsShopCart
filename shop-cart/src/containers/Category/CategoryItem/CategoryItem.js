@@ -1,27 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-
-class CategoryItem extends Component {
-   state = {
-      active: false
-   }
-    
-   render(){
-      const className = "cItem";
-      return(
-         <li className={className} id={this.props.id} onClick={this.props.filterClick}>{this.props.name}</li>
-      );
-   }
-}
-
-export default CategoryItem;
-
-
-
-/* const categoryItem = (props) => {
+const categoryItem = (props) => {
+   const className = (props.name == "All")? "cItem categoryItemActive": "cItem";
    return(
-      <li id={props.id} className="cItem" onClick={props.filterClick}>{props.name}</li>
+      <li id={props.id} className={className} onClick={props.filterClick}>{props.name}</li>
     );
 };
 
-export default categoryItem; */
+export default categoryItem;

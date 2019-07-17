@@ -53,13 +53,12 @@ class Layout extends Component {
 
   searchCategoryHandler = (event) => {
     this.setState({ filterCategoryItem: event.target.id });
-
     let x = document.querySelectorAll(".cItem");
     let i;
     for (i = 0; i < x.length; i++) {
       x[i].className = "cItem";
     }
-    event.target.className = "cItem categoryItemActive";
+    event.target.className = "cItem categoryItemActive";  
   }
 
   render() {
