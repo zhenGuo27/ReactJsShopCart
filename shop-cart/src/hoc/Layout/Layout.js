@@ -100,7 +100,7 @@ class Layout extends Component {
             }}>
             </Route>
 
-{/*             <Banner></Banner> */}
+            <Route path="/" exact component={Banner}></Route>
           </main>
         </div>
         <Footer></Footer>

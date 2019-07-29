@@ -3,7 +3,7 @@ import "./Banner.css";
 
 const banner = (props) => (
     <div className="bannerWrapper">
-        <img src="/images/banner2.jpg" />
+        <img src="/images/banner3.jpg" />
     </div>
 );
 

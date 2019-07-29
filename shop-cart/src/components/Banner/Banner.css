@@ -1,6 +1,7 @@
 .bannerWrapper {
     width: 100%;
     margin-top: 1.25rem;
+    position: relative;
 }
 
 .bannerWrapper img {

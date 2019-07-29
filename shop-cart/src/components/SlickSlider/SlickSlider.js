@@ -19,22 +19,22 @@ export default class SimpleSlider extends Component {
             <div className="slickWrapper">
                 <Slider {...settings}>
                     <div className="sliderItem">
-                        <h3>1</h3>
+                        <h3>Slick Item 1</h3>
                     </div>
                     <div className="sliderItem">
-                        <h3>2</h3>
+                        <h3>Slick Item 2</h3>
                     </div>
                     <div className="sliderItem">
-                        <h3>3</h3>
+                        <h3>Slick Item 3</h3>
                     </div>
                     <div className="sliderItem">
-                        <h3>4</h3>
+                        <h3>Slick Item 4</h3>
                     </div>
                     <div className="sliderItem">
-                        <h3>5</h3>
+                        <h3>Slick Item 5</h3>
                     </div>
                     <div className="sliderItem">
-                        <h3>6</h3>
+                        <h3>Slick Item 6</h3>
                     </div>
                 </Slider>
             </div>
