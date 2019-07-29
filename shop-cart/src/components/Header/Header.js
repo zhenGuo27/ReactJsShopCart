@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
+import { Route, Link } from 'react-router-dom';
 
 const header = (props) => {
     let navItems = [
@@ -21,7 +22,7 @@ const header = (props) => {
     return (
         <header>
             <div>
-                <div className="logo">Logo</div>
+                <div className="logo"><Link to="/">Logo</Link></div>
                 <Navigation navItems={navItems}></Navigation>
             </div>
         </header>

@@ -8,6 +8,8 @@ import List from '../../containers/List/List';
 import SmallDeviceWrapper from '../../components/SmallDeviceWrapper/SmallDeviceWrapper';
 import Footer from '../../components/Footer/Footer';
 import axios from '../../axios-orders';
+import SlickSlider from '../../components/SlickSlider/SlickSlider'; 
+import { Route } from 'react-router-dom';
 
 let dbProduct = null;
 
@@ -45,8 +47,6 @@ class Layout extends Component {
   }
 
   seachHandler = (event) => {
-    let product = [];
-    let productData = { ...dbProduct };
     let keyword = this.state.searchKeyword;
     this.setState({ filterKeyword: keyword });
   }
@@ -58,7 +58,7 @@ class Layout extends Component {
     for (i = 0; i < x.length; i++) {
       x[i].className = "cItem";
     }
-    event.target.className = "cItem categoryItemActive";  
+    event.target.className = "cItem categoryItemActive";
   }
 
   render() {
@@ -68,6 +68,7 @@ class Layout extends Component {
       <Aux>
         <Header></Header>
         <div className="mainWrapper">
+          <Route path="/" exact component={SlickSlider}></Route>
           <SmallDeviceWrapper>
             <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
             <Filter category={category} filterClick={this.searchCategoryHandler}></Filter>

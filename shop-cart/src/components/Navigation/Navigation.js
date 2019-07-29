@@ -2,6 +2,7 @@ import React from 'react';
 import './Navigation.css';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import NavigationItem from './NavigationItem/NavigationItem';
+import { Route, Link } from 'react-router-dom';
 
 const navigation = (props) => {
   let navItems = props.navItems.map((item) => {
@@ -12,9 +13,12 @@ const navigation = (props) => {
                   <i className="fa fa-caret-down"></i>
                 </button>
                 <div className="dropdown-content">
-                  <a href="#">Link 1</a>
+                 {/*  <a href="#">Link 1</a>
                   <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
+                  <a href="#">Link 3</a> */}
+                  <Link to="/link1">Link1</Link>
+                  <Link to="/link2">Link2</Link>
+                  <Link to="/link3">Link3</Link>
                 </div>
               </li>
       } else {

@@ -44,12 +44,12 @@ class List extends Component {
     componentWillReceiveProps(nextProps){        
         this.setState({ searchKeyword: nextProps.filterKeyword });
         const searchKw = this.state.searchKeyword;
-        const searchType = (searchKw != nextProps.filterKeyword)? "keyword": "category";
+        const searchType = (searchKw !== nextProps.filterKeyword)? "keyword": "category";
 
         switch (searchType) {
             case "keyword":
                 let filterProduct = dbProduct.filter(function (item, index, array) {
-                    return item.name.indexOf(nextProps.filterKeyword) != -1;
+                    return item.name.indexOf(nextProps.filterKeyword) !== -1;
                 });
                 this.setState({ productForRender: filterProduct });
                 this.getAmountOfPage(filterProduct.length);
@@ -58,10 +58,10 @@ class List extends Component {
                 this.setState({ searchCategory: nextProps.filterCategoryItem });
                 const searchCategory = this.state.searchCategory;
 
-                if (searchCategory != nextProps.filterCategoryItem && nextProps.filterCategoryItem != 0) {
+                if (searchCategory !== nextProps.filterCategoryItem && nextProps.filterCategoryItem !== 0) {
                     this.filterByCatgory(nextProps.filterCategoryItem);
-                } else if (dbProduct != null && searchCategory == 0 ||
-                     dbProduct != null && nextProps.filterCategoryItem == 0) {
+                } else if (dbProduct !== null && searchCategory === 0 ||
+                     dbProduct !== null && nextProps.filterCategoryItem === 0) {
                     this.AllCategory();
                 } else {
                     this.filterNoMatch();
@@ -72,7 +72,7 @@ class List extends Component {
 
     filterByCatgory = (filterCategoryItem) => {
         let filterProduct = dbProduct.filter(function (item, index, array) {
-            return item.categoryItem == filterCategoryItem;
+            return item.categoryItem === filterCategoryItem;
         });
         this.setState({ productForRender: filterProduct });
         this.getAmountOfPage(filterProduct.length);
@@ -92,7 +92,7 @@ class List extends Component {
         let amountOfPage = 0;
         let dividePage = len / 6;
         let modPage = len % 6;
-        amountOfPage = (modPage == 0) ? parseInt(dividePage, 10) : parseInt(dividePage + 1, 10);
+        amountOfPage = (modPage === 0) ? parseInt(dividePage, 10) : parseInt(dividePage + 1, 10);
         this.setState({amountOfPage: amountOfPage});
     }
 
@@ -115,7 +115,7 @@ class List extends Component {
             }
         }
 
-        if (listItems.length == 0) {
+        if (listItems.length === 0) {
             listItems.push(<div key="noMatch" className="noMatchItem">No result</div>)
         }
 
