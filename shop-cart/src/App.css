@@ -28,10 +28,8 @@ body {
 
 .mainWrapper {
   width: 80%;
-  padding: 1.25rem;
   margin: 0 auto;
   margin-top: 1.25rem;
-  background-color: white;
   max-width: 1170px;
   display: -webkit-flex; /* Safari */
   -webkit-justify-content: flex-start; /* Safari 6.1+ */

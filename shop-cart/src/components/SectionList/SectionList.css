@@ -1,9 +1,13 @@
 .sectionListWrapper {
     width: 100%;
+    padding: 1.25rem;
+    background-color: white;
 }
 
 .sectionTitle {
     width: 100%;
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
 }
 
 .itemWrapper {
@@ -20,5 +24,9 @@
 }
 
 .sectionItem {
-    width: 25%;
+    width: calc(25% - 1.25rem);
+}
+
+.sectionItem img {
+    width: 100%;
 }

@@ -13,6 +13,7 @@ import { Route } from 'react-router-dom';
 
 import SectionList from '../../components/SectionList/SectionList';
 import sectionList from '../../components/SectionList/SectionList';
+import Banner from '../../components/Banner/Banner';
 
 let dbProduct = null;
 
@@ -98,6 +99,8 @@ class Layout extends Component {
               );
             }}>
             </Route>
+
+{/*             <Banner></Banner> */}
           </main>
         </div>
         <Footer></Footer>

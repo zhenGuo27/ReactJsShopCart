@@ -73,7 +73,7 @@ class List extends Component {
 
     filterByCatgory = (filterCategoryItem) => {
         let filterProduct = dbProduct.filter(function (item, index, array) {
-            return item.categoryItem === filterCategoryItem;
+            return item.category === filterCategoryItem;
         });
         this.setState({ productForRender: filterProduct });
         this.getAmountOfPage(filterProduct.length);
