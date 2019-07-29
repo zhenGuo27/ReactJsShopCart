@@ -16,7 +16,7 @@ const navigation = (props) => {
                  {/*  <a href="#">Link 1</a>
                   <a href="#">Link 2</a>
                   <a href="#">Link 3</a> */}
-                  <Link to="/link1">Link1</Link>
+                  <Link to="/list">Products of list</Link>
                   <Link to="/link2">Link2</Link>
                   <Link to="/link3">Link3</Link>
                 </div>

@@ -5,6 +5,12 @@
     justify-content: flex-start;
 }
 
+@media (max-width: 768px) {
+    .navigation {
+        display: none;
+    } 
+}
+
 .navigationItem {
     margin-bottom: 0.625rem;
 }

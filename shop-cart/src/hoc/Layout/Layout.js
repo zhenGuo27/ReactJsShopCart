@@ -8,8 +8,11 @@ import List from '../../containers/List/List';
 import SmallDeviceWrapper from '../../components/SmallDeviceWrapper/SmallDeviceWrapper';
 import Footer from '../../components/Footer/Footer';
 import axios from '../../axios-orders';
-import SlickSlider from '../../components/SlickSlider/SlickSlider'; 
+import SlickSlider from '../../components/SlickSlider/SlickSlider';
 import { Route } from 'react-router-dom';
+
+import SectionList from '../../components/SectionList/SectionList';
+import sectionList from '../../components/SectionList/SectionList';
 
 let dbProduct = null;
 
@@ -69,17 +72,32 @@ class Layout extends Component {
         <Header></Header>
         <div className="mainWrapper">
           <Route path="/" exact component={SlickSlider}></Route>
-          <SmallDeviceWrapper>
-            <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
-            <Filter category={category} filterClick={this.searchCategoryHandler}></Filter>
-          </SmallDeviceWrapper>
+          <Route path="/" exact component={SectionList}></Route>
+          <Route path="/list" render={() => {
+            return (
+              <SmallDeviceWrapper>
+                <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
+              </SmallDeviceWrapper>
+            );
+          }}>
+          </Route>
           <main>
-            <List filterKeyword={this.state.filterKeyword} filterCategoryItem={this.state.filterCategoryItem}></List>
+            <Route path="/list" render={() => {
+              return (
+                <List filterKeyword={this.state.filterKeyword} filterCategoryItem={this.state.filterCategoryItem}></List>
+              );
+            }}>
+            </Route>
+            <Route path="/list" render={() => {
+              return (
+                <Aside>
+                  <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
+                  <Filter category={category} filterClick={this.searchCategoryHandler}></Filter>
+                </Aside>
+              );
+            }}>
+            </Route>
           </main>
-          <Aside>
-            <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
-            <Filter category={category} filterClick={this.searchCategoryHandler}></Filter>
-          </Aside>
         </div>
         <Footer></Footer>
       </Aux>

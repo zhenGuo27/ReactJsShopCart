@@ -4,6 +4,12 @@
     font-weight: bold;
 }
 
+@media (max-width: 768px) {
+    .listItem {
+        width: 100%;
+    } 
+}
+
 .listItem .name {
     font-size: 1.1em;
     padding-top: 0.1875rem;

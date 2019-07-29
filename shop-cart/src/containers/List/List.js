@@ -121,10 +121,12 @@ class List extends Component {
 
         return (
             <Aux>
-                <div className="listWrapper">
-                    {listItems}
-                </div>
-                <Pagination amountOfPage={this.state.amountOfPage}></Pagination>
+                <div className="productListWrapper">
+                    <div className="listWrapper">
+                        {listItems}
+                    </div>
+                    <Pagination amountOfPage={this.state.amountOfPage}></Pagination>
+                </div>               
             </Aux>
         );
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import { Route, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const header = (props) => {
     let navItems = [
@@ -22,6 +23,7 @@ const header = (props) => {
     return (
         <header>
             <div>
+                <div className="mobileMenu"><FontAwesomeIcon icon="bars" /></div>
                 <div className="logo"><Link to="/">Logo</Link></div>
                 <Navigation navItems={navItems}></Navigation>
             </div>

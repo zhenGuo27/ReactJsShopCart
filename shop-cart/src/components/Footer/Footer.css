@@ -14,13 +14,24 @@ footer {
     -webkit-justify-content: space-between; /* Safari 6.1+ */
     display: flex;
     justify-content: space-between;
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    flex-wrap: wrap;
 }
 
 .footerWrapper > div {
     width: 30%;
 }
 
+@media (max-width: 768px) {
+    .footerWrapper > div {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.25rem;
+    } 
+}
+
 .footerItemName {
+    color: #ffa45c;
     font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 0.625rem;
