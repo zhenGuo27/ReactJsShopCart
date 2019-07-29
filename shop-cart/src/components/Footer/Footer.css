@@ -4,6 +4,10 @@ footer {
     margin-top: 1.25rem;
     padding: 1.25rem 0;
     background-color: #232323;
+
+    /*for sticky footer*/
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0; 
 }
 
 .footerWrapper {

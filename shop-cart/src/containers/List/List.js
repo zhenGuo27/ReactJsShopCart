@@ -55,17 +55,18 @@ class List extends Component {
                 this.getAmountOfPage(filterProduct.length);
                 break;
             case "category":
-                this.setState({ searchCategory: nextProps.filterCategoryItem });
-                const searchCategory = this.state.searchCategory;
+                const searchCategory = parseInt(this.state.searchCategory, 10);
+                const nextFilterCategoryItem = parseInt(nextProps.filterCategoryItem, 10);
 
-                if (searchCategory !== nextProps.filterCategoryItem && nextProps.filterCategoryItem !== 0) {
-                    this.filterByCatgory(nextProps.filterCategoryItem);
+                if (searchCategory !== nextFilterCategoryItem && nextFilterCategoryItem !== 0) {
+                    this.filterByCatgory(nextFilterCategoryItem);
                 } else if (dbProduct !== null && searchCategory === 0 ||
-                     dbProduct !== null && nextProps.filterCategoryItem === 0) {
+                     dbProduct !== null && nextFilterCategoryItem === 0) {
                     this.AllCategory();
                 } else {
                     this.filterNoMatch();
                 }
+                this.setState({ searchCategory: nextFilterCategoryItem });
                 break;
         }
     }

@@ -69,19 +69,20 @@ class Layout extends Component {
 
     return (
       <Aux>
-        <Header></Header>
-        <div className="mainWrapper">
-          <Route path="/" exact component={SlickSlider}></Route>
-          <Route path="/" exact component={SectionList}></Route>
-          <Route path="/list" render={() => {
-            return (
-              <SmallDeviceWrapper>
-                <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
-              </SmallDeviceWrapper>
-            );
-          }}>
-          </Route>
-          <main>
+        <div className="stickyFooterContent">
+          <Header></Header>
+          <main className="mainWrapper">
+            <Route path="/" exact component={SlickSlider}></Route>
+            <Route path="/" exact component={SectionList}></Route>
+
+            <Route path="/list" render={() => {
+              return (
+                <SmallDeviceWrapper>
+                  <Search keyword={this.state.searchKeyword} click={this.seachHandler} change={this.searchOnchange}></Search>
+                </SmallDeviceWrapper>
+              );
+            }}>
+            </Route>
             <Route path="/list" render={() => {
               return (
                 <List filterKeyword={this.state.filterKeyword} filterCategoryItem={this.state.filterCategoryItem}></List>

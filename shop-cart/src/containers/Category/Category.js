@@ -24,7 +24,6 @@ const category = (props) => {
 
     return (
         <ul className="categoryWrapper">
-
             {items}
         </ul>
     );
