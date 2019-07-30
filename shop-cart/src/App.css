@@ -49,3 +49,35 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.displayFlex {
+  display: -webkit-flex; /* Safari */
+  -webkit-justify-content: flex-start; /* Safari 6.1+ */
+  display: flex;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start; /* Safari 7.0+ */
+  align-items: flex-start;
+}
+
+.sharedSelect {
+  padding: 0.3125rem;
+  border: 1px solid #ccc; 
+}
+
+.sharedInput {
+  border: 1px solid #ccc; 
+}
+
+.sharedBtn {
+  width: 9.375rem;
+  padding: 0.625rem;
+  border-radius: 2px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  background-color: #232323;
+}
+
+.sharedBtn:hover {
+  color: #ffa45c;
+}

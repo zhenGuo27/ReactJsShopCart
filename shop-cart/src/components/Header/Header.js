@@ -23,7 +23,7 @@ const header = (props) => {
     return (
         <header>
             <div>
-                <div className="mobileMenu"><FontAwesomeIcon icon="bars" /></div>
+                <div className="mobileMenu"><i className="fas fa-bars"></i></div>
                 <div className="logo"><Link to="/">Logo</Link></div>
                 <Navigation navItems={navItems}></Navigation>
             </div>

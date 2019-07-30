@@ -14,6 +14,7 @@ import { Route } from 'react-router-dom';
 import SectionList from '../../components/SectionList/SectionList';
 import sectionList from '../../components/SectionList/SectionList';
 import Banner from '../../components/Banner/Banner';
+import Product from '../../containers/Product/Product';
 
 let dbProduct = null;
 
@@ -101,6 +102,7 @@ class Layout extends Component {
             </Route>
 
             <Route path="/" exact component={Banner}></Route>
+            <Route path="/product/:productId" exact component={Product}></Route>
           </main>
         </div>
         <Footer></Footer>

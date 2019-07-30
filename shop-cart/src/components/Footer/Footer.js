@@ -9,13 +9,13 @@ const footer = (props) => {
                 <div className="socialMediaWrapper">
                     <div className="footerItemName">Social Media</div>
                     <div className="footerItem fontIconWrapper">
-                        <FontAwesomeIcon icon={['fab', 'facebook']} />
+                        <i className="fab fa-facebook-square"></i>
                     </div>
                     <div className="footerItem fontIconWrapper">
-                        <FontAwesomeIcon icon={['fab', 'instagram']} />
+                        <i className="fab fa-instagram"></i>
                     </div>
                     <div className="footerItem fontIconWrapper">
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />
+                        <i className="fab fa-twitter"></i>
                     </div>
                 </div>
                 <div className="sitemapWrapper">
@@ -25,9 +25,9 @@ const footer = (props) => {
                 </div>
                 <div className="contactInfoWrapper">
                     <div className="footerItemName">Contact Info</div>
-                    <div className="footerItem contactItem"><FontAwesomeIcon icon="phone" /> 12345678</div>
-                    <div className="footerItem contactItem"><FontAwesomeIcon icon="map-marker-alt" /> address</div>
-                    <div className="footerItem contactItem"><FontAwesomeIcon icon="envelope" /> email@email.com</div>
+                    <div className="footerItem contactItem"><i className="fas fa-phone"></i> 12345678</div>
+                    <div className="footerItem contactItem"><i className="fas fa-map-marker-alt"></i> address</div>
+                    <div className="footerItem contactItem"><i className="fas fa-envelope"></i> email@email.com</div>
                 </div>
             </div>
         </footer>

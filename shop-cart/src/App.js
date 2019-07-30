@@ -6,9 +6,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 import fontawesome from '@fortawesome/fontawesome';
 import brands from '@fortawesome/fontawesome-free-brands';
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
+//import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid';
+//fontawesome.library.add(brands, fontawesomeFreeSolid);
 
-fontawesome.library.add(brands, faCheckSquare, faCoffee);
+//import { faCheckSquare, faCoffee, faStarHalf } from '@fortawesome/fontawesome-free-solid';
+//fontawesome.library.add(brands, faCheckSquare, faCoffee, faStarHalf);
+
 
 class App extends Component {
   render() {

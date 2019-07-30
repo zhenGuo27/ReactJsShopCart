@@ -104,7 +104,7 @@ class List extends Component {
 
         Object.keys(productData).map((igKey, index) => {
             hiddenImg = productData[igKey].img;
-            listItems.push(<ListItems key={productData[igKey].name} name={productData[igKey].name} img={productData[igKey].img} price={productData[igKey].price}></ListItems>);
+            listItems.push(<ListItems id={productData[igKey].id} key={productData[igKey].name} name={productData[igKey].name} img={productData[igKey].img} price={productData[igKey].price}></ListItems>);
         });       
 
         if (listItems.length % 3 !== 0) {
