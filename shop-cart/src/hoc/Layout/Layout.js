@@ -12,11 +12,11 @@ import SlickSlider from '../../components/SlickSlider/SlickSlider';
 import { Route } from 'react-router-dom';
 
 import SectionList from '../../components/SectionList/SectionList';
-import sectionList from '../../components/SectionList/SectionList';
 import Banner from '../../components/Banner/Banner';
 import Product from '../../containers/Product/Product';
 
 let dbProduct = null;
+const dbSectionList = [];
 
 class Layout extends Component {
   state = {
@@ -45,6 +45,24 @@ class Layout extends Component {
       .catch(error => {
         console.log("Category Get error", error);
       });
+
+    axios.get('sectionList.json')
+      .then(reponse => {
+          const listData = { ...reponse.data };
+          Object.keys(listData)
+              .map(igKey => {
+                  listData[igKey].items.forEach((element, i, array) => {
+                      // element: 單一個陣列的值
+                      // i: 陣列的索引值 0, 1, 2, ...
+                      // array: 傳入的陣列本體
+                      dbSectionList.push(element);
+                  });
+              });
+      })
+      .catch(error => {
+          console.log("Section List Get error", error);
+      });
+
   }
 
   searchOnchange = (event) => {
@@ -75,7 +93,7 @@ class Layout extends Component {
           <Header></Header>
           <main className="mainWrapper">
             <Route path="/" exact component={SlickSlider}></Route>
-            <Route path="/" exact component={SectionList}></Route>
+            <Route path="/" exact component={() => <SectionList sectionData={[...dbSectionList]} />}></Route>
 
             <Route path="/list" render={() => {
               return (

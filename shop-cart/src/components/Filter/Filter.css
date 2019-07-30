@@ -16,6 +16,10 @@ li {
    font-size: 0.9em;
 }
 
+.categoryWrapper li:not(.categoryName) {
+    cursor: pointer;
+}
+
 .itemWrapper {
     font-size: 0.9em;
     font-weight: normal;
