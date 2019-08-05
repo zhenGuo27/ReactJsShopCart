@@ -5,18 +5,28 @@ import "./Product.css";
 import SectionList from '../../components/SectionList/SectionList';
 import Aux from "../../hoc/Auxiliary/Auxiliary";
 
-const dbSectionList = [];
-
 class Product extends Component {
     state = {
         product: null,
         size: [],
         avalibleAmount: 0,
         selectedAmount: 1,
-        rate: null
+        rate: null,
+        sectionList: []
     }
 
     componentDidMount() {
+        this.initProduct();
+        this.initSelectList();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.match.params.productId !== this.props.match.params.productId) {
+            this.initProduct();
+        }
+    }
+
+    initProduct = () => {
         axios.get('product.json')
             .then(reponse => {
                 const prodcutsData = { ...reponse.data };
@@ -59,11 +69,14 @@ class Product extends Component {
             .catch(error => {
                 console.log("Size Get error", error);
             });
+    }
 
-
+    initSelectList = () => {
         axios.get('sectionList.json')
             .then(reponse => {
                 const listData = { ...reponse.data };
+                let dbSectionList = [];
+
                 Object.keys(listData)
                     .map(igKey => {
                         listData[igKey].items.forEach((element, i, array) => {
@@ -73,12 +86,12 @@ class Product extends Component {
                             dbSectionList.push(element);
                         });
                     });
+
+                this.setState({ sectionList: dbSectionList });
             })
             .catch(error => {
                 console.log("Section List Get error", error);
             });
-
-        //console.log("id", this.props.match.params.productId)
     }
 
     filterSize = (name) => {
@@ -129,16 +142,16 @@ class Product extends Component {
         const len = (isFloat) ? (intRate - 1) : intRate;
 
         for (let i = 0; i < intRate; i++) {
-            html.push(<i className="fas fa-star"></i>);
+            html.push(<i key={(i + 1)} className="fas fa-star"></i>);
         }
 
         if (isFloat) {
-            html.push(<i className="fas fa-star-half-alt"></i>);
+            html.push(<i key={(intRate + 1)} className="fas fa-star-half-alt"></i>);
         }
 
         const htmlLen = html.length;
         for (let j = 0; j < (5 - htmlLen); j++) {
-            html.push(<i className="far fa-star"></i>);
+            html.push(<i key={(htmlLen + j + 1)} className="far fa-star"></i>);
         }
 
         return html;
@@ -147,6 +160,7 @@ class Product extends Component {
     render() {
         const product = { ...this.state.product };
         const size = { ...this.state.size };
+        const sectionList = [...this.state.sectionList];
 
         return (
             <Aux>
@@ -186,7 +200,7 @@ class Product extends Component {
                         </div>
                     </div>
                 </div>
-                <SectionList sectionData={[...dbSectionList]}></SectionList>
+                <SectionList sectionData={sectionList}></SectionList>
             </Aux>
         );
     }

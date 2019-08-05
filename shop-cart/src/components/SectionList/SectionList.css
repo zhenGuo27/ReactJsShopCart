@@ -26,6 +26,7 @@
 
 .sectionItem {
     width: calc(25% - 1.25rem);
+    cursor: pointer;
 }
 
 .sectionItem img {
